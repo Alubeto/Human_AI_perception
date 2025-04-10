@@ -1,13 +1,27 @@
 #!/bin/bash
 
+BLENDER_TIMEOUT=60  # 1 minutes, if it has not finished the process yet, kill it
 # Define paths
 WORKING_DIR="/Users/albert/Documents/GitHub/Human_AI_perception"
-OUTPUT_FILE="output.txt"
+OUTPUT_FILE="directory.txt"
+SCRIPT_DIR="/Users/albert/Documents/GitHub/Human_AI_perception/test.py"
 
 # Check if output file exists
 if [ ! -f "$OUTPUT_FILE" ]; then
     echo "Error: $OUTPUT_FILE not found!"
     exit 1
+fi
+
+# Read the batch info
+echo "Enter the batch info:"
+read name
+echo "Generating batch $name!"
+
+WORKING_DIR="/Users/albert/Documents/GitHub/Human_AI_perception/$name"
+
+# check if the directory exist, if not, create one
+if ![ -d "$WORKING_DIR" ]; then
+    mkdir -p "$WORKING_DIR"
 fi
 
 # Read each line from output.txt
@@ -27,7 +41,7 @@ while IFS= read -r line; do
         
         # Run Blender in the background
         echo "Running Blender in $WORKING_DIR/$folder/$subfolder"
-        /Applications/Blender.app/Contents/MacOS/Blender -b -P test.py -- "$folder/$subfolder" &
+        timeout $BLENDER_TIMEOUT /Applications/Blender.app/Contents/MacOS/Blender -b -P "$SCRIPT_DIR" -- "$folder/$subfolder"
 
         # Move back to the working directory
         cd "$WORKING_DIR" || exit

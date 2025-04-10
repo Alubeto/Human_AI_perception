@@ -7,7 +7,7 @@ import sys
 
 # Configuration
 collection_name = "ImportedMeshes"
-rotation_increment = math.radians(45)  # Convert degrees to radians
+rotation_increment = math.radians(15)  # Convert degrees to radians
 loop = 7
 filepath_name = os.getcwd()  # Use the current working directory
 #obj_directory = '/Users/albert/.cache/huggingface/hub/datasets--ShapeNet--ShapeNetCore/blobs/02773838/10a885f5971d9d4ce858db1dc3499392/models/model_normalized.obj'
