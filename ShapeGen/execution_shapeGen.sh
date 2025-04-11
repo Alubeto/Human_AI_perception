@@ -3,8 +3,8 @@
 BLENDER_TIMEOUT=60  # 1 minutes, if it has not finished the process yet, kill it
 # Define paths
 WORKING_DIR="/Users/albert/Documents/GitHub/Human_AI_perception"
-OUTPUT_FILE="directory.txt"
-SCRIPT_DIR="/Users/albert/Documents/GitHub/Human_AI_perception/test.py"
+OUTPUT_FILE="directory_shapeGen.txt"
+SCRIPT_DIR="/Users/albert/Documents/GitHub/Human_AI_perception/blender_code.py"
 
 # Check if output file exists
 if [ ! -f "$OUTPUT_FILE" ]; then
